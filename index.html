@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Legacy of Phrecia Countdown</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000 url('https://clan.fastly.steamstatic.com/images/5193306/de1ff5a34ffcb9afa71e23a6e3c0f539a6d9fbfc.jpg') center/cover;
+            font-family: 'Crimson Text', serif;
+            color: #D4B888;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .countdown-container {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(20, 12, 8, 0.9);
+            border: 2px solid #8B5E3C;
+            box-shadow: 0 0 20px rgba(139, 94, 60, 0.3);
+            position: relative;
+        }
+
+        .avatar-container {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar-left {
+            left: -130px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .avatar-right {
+            right: -130px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .avatar-bottom {
+            bottom: -110px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .avatar-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #8B5E3C;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(139, 94, 60, 0.6);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .avatar-name {
+            margin-top: 10px;
+            color: #D4B888;
+            font-size: 0.9rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 4px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        .event-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .countdown {
+            font-size: 6rem;
+            font-weight: bold;
+            color: #E8C888;
+            text-shadow:
+                0 0 10px rgba(232, 200, 136, 0.3),
+                2px 2px 2px rgba(0, 0, 0, 0.8);
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-value {
+            background: linear-gradient(180deg, #4A3421 0%, #2A1810 100%);
+            padding: 0.5rem 1rem;
+            border: 1px solid #8B5E3C;
+            border-radius: 5px;
+            min-width: 120px;
+        }
+
+        .time-label {
+            font-size: 1.2rem;
+            color: #8B5E3C;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .event-description {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            color: #A67C52;
+        }
+
+        .decorative-border {
+            position: absolute;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            border: 1px solid #8B5E3C;
+            top: 20px;
+            left: 20px;
+            pointer-events: none;
+        }
+
+        .corner-ornament {
+            position: absolute;
+            color: #8B5E3C;
+            font-size: 1.5rem;
+        }
+
+        .top-left { top: 5px; left: 5px; }
+        .top-right { top: 5px; right: 5px; }
+        .bottom-left { bottom: 5px; left: 5px; }
+        .bottom-right { bottom: 5px; right: 5px; }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Аватарка слева -->
+        <div class="avatar-container avatar-left">
+            <img src="https://cdn.discordapp.com/avatars/95546667855511552/c947c078dec98919712b4319cd5a987e.webp?size=80"
+                 alt="Игрок 1"
+                 class="avatar-img">
+            <div class="avatar-name">TPAXEP</div>
+        </div>
+
+        <!-- Аватарка справа -->
+        <div class="avatar-container avatar-right">
+            <img src="https://cdn.discordapp.com/avatars/163480726790995968/8229072a35b95da5607e374d7a73fc55.webp?size=128"
+                 alt="Игрок 2"
+                 class="avatar-img">
+            <div class="avatar-name">Miacis</div>
+        </div>
+
+        <div class="countdown-container">
+            <div class="decorative-border"></div>
+            <div class="corner-ornament top-left"><i class="fas fa-dragon"></i></div>
+            <div class="corner-ornament top-right"><i class="fas fa-dragon fa-flip-horizontal"></i></div>
+            <div class="corner-ornament bottom-left"><i class="fas fa-skull"></i></div>
+            <div class="corner-ornament bottom-right"><i class="fas fa-skull"></i></div>
+
+            <h1 class="event-title">Legacy of Phrecia</h1>
+            <div class="countdown" id="countdown">
+                <div class="time-unit">
+                    <div class="time-value" id="days">00</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">Seconds</div>
+                </div>
+            </div>
+
+            <!-- Аватарка снизу -->
+            <div class="avatar-container avatar-bottom">
+                <img src="https://cdn.discordapp.com/avatars/114392736945274881/8ed321cccec2060ec9651b0aa11a5b9e.webp?size=80"
+                     alt="Игрок 3"
+                     class="avatar-img">
+                <div class="avatar-name">Gadiner</div>
+            </div>
+
+            <div class="event-description">
+                The fate of Phrecia awaits, Exile...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to (January 29th, 2026, 1:00 PM PST)
+        const countdownDate = new Date('January 29, 2026 13:00:00 PST').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "<div class='time-value'>⚔️ LOGIN NOW ⚔️</div>";
+            }
+        }
+
+        // Update the countdown every second
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
